@@ -1,0 +1,4 @@
+.cell {
+    border: solid 1px;
+    flex: 1 1 33%;
+}
