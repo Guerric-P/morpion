@@ -6,11 +6,11 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { IconButton, Toolbar, Drawer, CssBaseline, AppBar, Typography, Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import { connect } from 'react-redux';
 import { expandSidebar, collapseSidebar } from './redux/actions/layout';
-import { MenuIcon } from '@material-ui/icons/Menu';
-import { ChevronLeftIcon } from '@material-ui/icons/ChevronLeft';
-import { ChevronRightIcon } from '@material-ui/icons/ChevronRight';
-import { InboxIcon } from '@material-ui/icons/MoveToInbox';
-import { MailIcon } from '@material-ui/icons/Mail';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
 
 const TicTacToe = React.lazy(() => import('./components/tic-tac-toe'));
 const Form = React.lazy(() => import('./components/form'));
@@ -18,6 +18,8 @@ const Email = React.lazy(() => import('./components/email'));
 const Drafts = React.lazy(() => import('./components/drafts'));
 
 const drawerWidth = 240;
+
+const routes = [['Morpion', 'tic-tac-toe'], ['Formulaire', 'form'], ['Send email', 'email'], ['Drafts', 'drafts']];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -130,7 +132,7 @@ function App({ expandSidebar, collapseSidebar, sideBarOpen }) {
           </div>
           <Divider />
           <List>
-            {[['Morpion', 'tic-tac-toe'], ['Formulaire', 'form'], ['Send email', 'email'], ['Drafts', 'drafts']].map(([text, route], index) => (
+            {routes.map(([text, route], index) => (
               <ListItem component={RouterLink} to={route} button key={text}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                 <ListItemText primary={text} />
