@@ -13,7 +13,7 @@ const mapDispatchToProps = {
 }
 
 function TicTacToe({ grid, reset }) {
-    useEffect(() => reset, [reset]);
+    useEffect(() => reset, []);
 
     return <>
         <div className={styles.container}>{grid.map((_, i) => <Row key={i} index={i} state={grid[i]} />)}</div>
