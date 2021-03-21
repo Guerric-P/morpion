@@ -1,4 +1,4 @@
-import { UPDATE } from "../actions/form";
+import { FORM_UPDATE } from "../actions/form";
 
 const initialState = {
     isGoing: true,
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case UPDATE: {
+        case FORM_UPDATE: {
             const { prop, value } = action;
             return {
                 ...state,

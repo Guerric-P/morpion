@@ -1,3 +1,3 @@
-export const UPDATE = Symbol();
+export const FORM_UPDATE = 'FORM_UPDATE';
 
-export const update = (prop, value) => ({ type: UPDATE, prop, value });
+export const update = (prop, value) => ({ type: FORM_UPDATE, prop, value });

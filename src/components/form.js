@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { update } from './../redux/actions/form';
 import { connect } from 'react-redux';
+import { Button, Checkbox, FormControlLabel, TextField } from '@material-ui/core';
 
 const mapStateToProps = ({ form }) => ({
     form
@@ -27,24 +27,23 @@ const Form = ({ form, update }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>
-                Participe :
-            <input
+            <FormControlLabel
+                control={<Checkbox
                     name="isGoing"
                     type="checkbox"
                     checked={form.isGoing}
-                    onChange={handleInputChange} />
-            </label>
-            <br />
-            <label>
-                Nombre d'invités :
-            <input
+                    onChange={handleInputChange} />}
+                label="Participe"
+
+            />
+
+            <TextField
                     name="numberOfGuests"
                     type="number"
+                    label="Nombre d'invités"
                     value={form.numberOfGuests}
                     onChange={handleInputChange} />
-            </label>
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
         </form>
     );
 }
