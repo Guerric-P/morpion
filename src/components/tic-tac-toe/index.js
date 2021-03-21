@@ -12,7 +12,7 @@ const mapDispatchToProps = {
     reset
 }
 
-function TicTacToe({ grid, reset }) {
+const TicTacToe = ({ grid, reset }) => {
     useEffect(() => reset, []);
 
     return <>

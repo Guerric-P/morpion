@@ -7,8 +7,6 @@ const mapDispatchToProps = {
     play
 };
 
-function Cell({ state, play, row, cell }) {
-    return <div className={clsx(styles.cell)} onClick={() => play({ row, cell })}>{state ? (state === 1) ? '✕' : '◯' : ''}</div>
-}
+const Cell = ({ state, play, row, cell }) => <div className={clsx(styles.cell)} onClick={() => play({ row, cell })}>{state ? (state === 1) ? '✕' : '◯' : ''}</div>;
 
 export default connect(null, mapDispatchToProps)(Cell);

@@ -1,24 +1,27 @@
 import { useState } from 'react';
+import { update } from './../redux/actions/form';
+import { connect } from 'react-redux';
 
-export default function Form() {
-    const [state, setState] = useState({
-        isGoing: true,
-        numberOfGuests: 2
-    });
+const mapStateToProps = ({ form }) => ({
+    form
+});
+
+const mapDispatchToProps = {
+    update
+}
+
+const Form = ({ form, update }) => {
 
     function handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        setState(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        update(name, value);
     }
 
     function handleSubmit(event) {
-        console.log(state);
+        console.log(form);
         event.preventDefault();
     }
 
@@ -29,7 +32,7 @@ export default function Form() {
             <input
                     name="isGoing"
                     type="checkbox"
-                    checked={state.isGoing}
+                    checked={form.isGoing}
                     onChange={handleInputChange} />
             </label>
             <br />
@@ -38,10 +41,12 @@ export default function Form() {
             <input
                     name="numberOfGuests"
                     type="number"
-                    value={state.numberOfGuests}
+                    value={form.numberOfGuests}
                     onChange={handleInputChange} />
             </label>
             <button type="submit">Submit</button>
         </form>
     );
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
