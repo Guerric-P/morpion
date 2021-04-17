@@ -1,3 +1,9 @@
+import styled from 'styled-components';
+
+const Div = styled.div`
+    color: palevioletred;
+`;
+
 export function Inbox() {
-    return <div>Inbox</div>
+    return <Div></Div>
 }
