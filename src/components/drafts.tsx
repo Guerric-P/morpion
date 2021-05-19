@@ -13,13 +13,16 @@ function useQuery() {
 }
 
 export default function () {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<any[]>([]);
     const query = useQuery();
     const accesRestreint = query.get('acces-restreint') === 'true' ? true : query.get('acces-restreint') === 'false' ? false : undefined;
 
-    useEffect(() => fetch('https://www.data.gouv.fr/fr/datasets/r/f76f80da-ebd0-4c9a-95aa-18ff622f2450').then(x => x.json()).then(setData), []);
+    useEffect(() => {
+        const fetchData = () => fetch('https://www.data.gouv.fr/fr/datasets/r/f76f80da-ebd0-4c9a-95aa-18ff622f2450').then(x => x.json()).then(setData);
+        fetchData();
+    }, []);
 
-    const filterLink = query => param => value => {
+    const filterLink = (query: URLSearchParams) => (param: string) => (value: string) => {
         const clone = new URLSearchParams(query.toString());
         clone.set(param, value);
         return `?${clone.toString()}`;

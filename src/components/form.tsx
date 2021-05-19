@@ -1,8 +1,8 @@
-import { update } from './../redux/actions/form';
+import { update } from '../redux/actions/form';
 import { connect } from 'react-redux';
 import { Button, Checkbox, FormControlLabel, TextField } from '@material-ui/core';
 
-const mapStateToProps = ({ form }) => ({
+const mapStateToProps = ({ form }: any) => ({
     form
 });
 
@@ -10,9 +10,9 @@ const mapDispatchToProps = {
     update
 }
 
-const Form = ({ form, update }) => {
+const Form = ({ form, update }: any) => {
 
-    function handleInputChange(event) {
+    function handleInputChange(event: any) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
@@ -20,7 +20,7 @@ const Form = ({ form, update }) => {
         update(name, value);
     }
 
-    function handleSubmit(event) {
+    function handleSubmit(event: any) {
         console.log(form);
         event.preventDefault();
     }
@@ -30,7 +30,6 @@ const Form = ({ form, update }) => {
             <FormControlLabel
                 control={<Checkbox
                     name="isGoing"
-                    type="checkbox"
                     checked={form.isGoing}
                     onChange={handleInputChange} />}
                 label="Participe"

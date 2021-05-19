@@ -83,11 +83,11 @@ const mapDispatchToProps = {
   collapseSidebar,
 }
 
-const mapStateToProps = ({ layout: { sideBarOpen } }) => ({
+const mapStateToProps = ({ layout: { sideBarOpen } }: any) => ({
   sideBarOpen
 })
 
-function App({ expandSidebar, collapseSidebar, sideBarOpen }) {
+function App({ expandSidebar, collapseSidebar, sideBarOpen }: any) {
   const classes = useStyles();
   const theme = useTheme();
 

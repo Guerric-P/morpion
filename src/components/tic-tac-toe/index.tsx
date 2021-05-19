@@ -4,7 +4,7 @@ import { reset } from '../../redux/actions/game';
 import Row from './row';
 import styles from './tic-tac-toe.module.css';
 
-const mapStateToProps = ({ game: { grid } }) => ({
+const mapStateToProps = ({ game: { grid } }: any) => ({
     grid
 });
 
@@ -12,7 +12,7 @@ const mapDispatchToProps = {
     reset
 }
 
-const TicTacToe = ({ grid, reset }) => {
+const TicTacToe = ({ grid, reset }: { grid: any[], reset: (() => void) }) => {
     useEffect(() => reset, []);
 
     return <>

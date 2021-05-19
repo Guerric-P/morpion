@@ -5,7 +5,7 @@ const initialState = {
     numberOfGuests: 2
 };
 
-export default function (state = initialState, action) {
+export default function (state: any = initialState, action: any) {
     switch (action.type) {
         case FORM_UPDATE: {
             const { prop, value } = action;
